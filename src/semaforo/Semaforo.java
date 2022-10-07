@@ -40,9 +40,10 @@ public class Semaforo extends JFrame {
 	 * Create the frame.
 	 */
 	public Semaforo() {
-		setTitle("cemasforo");
+		setResizable(false);
+		setTitle("CMASFORO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 714, 576);
+		setBounds(100, 100, 339, 398);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
