@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ServicioConexion.ServicioConex;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -48,9 +51,12 @@ public class ConnectScreen extends JFrame {
 		btnNewButton.setBounds(0, 0, 229, 116);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Semaforo si = new Semaforo();
-				si.setVisible(true);
-				si.conectarServer();
+				
+				ServicioConex conexion = new ServicioConex();
+				conexion.conectarServer();
+				
+				new Semaforo(conexion);
+				
 				dispose();
 			}
 		});

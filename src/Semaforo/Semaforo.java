@@ -1,15 +1,17 @@
 package Semaforo;
 
-import java.awt.Component;
+
 import java.awt.EventQueue;
-import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ServicioConexion.ServicioConex;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
-import javax.swing.Icon;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,27 +21,12 @@ import java.awt.Font;
 public class Semaforo extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Semaforo frame = new Semaforo();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	ServicioConex conexion;
 
 	/**
 	 * Create the frame.
 	 */
-	public Semaforo() {
+	public Semaforo(ServicioConex conexion) {
 		setResizable(false);
 		setTitle("CMASFORO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +50,11 @@ public class Semaforo extends JFrame {
 			}
 		});
 		contentPane.add(btnNewButton);
+		
+		this.conexion = conexion;
+		this.setVisible(true);
 	}
 	
-	public void conectarServer() {
-		
-		
-	}
+	
 
 }
