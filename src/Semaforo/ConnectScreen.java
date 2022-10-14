@@ -53,6 +53,7 @@ public class ConnectScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				ServicioConex conexion = new ServicioConex();
+				
 				conexion.conectarServer();
 				
 				new Semaforo(conexion);
