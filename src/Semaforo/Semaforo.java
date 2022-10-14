@@ -1,17 +1,22 @@
-package semaforo;
+package Semaforo;
 
-import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class ConnectScreen extends JFrame {
+public class Semaforo extends JFrame {
 
 	private JPanel contentPane;
 
@@ -22,7 +27,7 @@ public class ConnectScreen extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConnectScreen frame = new ConnectScreen();
+					Semaforo frame = new Semaforo();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,27 +39,35 @@ public class ConnectScreen extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ConnectScreen() {
-		setTitle("SI");
+	public Semaforo() {
 		setResizable(false);
+		setTitle("CMASFORO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 245, 155);
+		setBounds(100, 100, 339, 398);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JButton btnNewButton = new JButton("Conectar");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
-		btnNewButton.setBounds(0, 0, 229, 116);
+		JLabel lblNewLabel_1 = new JLabel(new ImageIcon("./res/rojo.png"), JLabel.CENTER);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel(new ImageIcon("./res/verde.png"), JLabel.CENTER);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("CAMBIAR");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Semaforo().setVisible(true);
-				dispose();
 			}
 		});
-		contentPane.setLayout(null);
 		contentPane.add(btnNewButton);
+	}
+	
+	public void conectarServer() {
+		
+		
 	}
 
 }
