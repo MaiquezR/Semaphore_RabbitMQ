@@ -16,7 +16,8 @@ public class ServicioConex {
 	public ServicioConex() {
 		conexion = new ConnectionFactory();
 		try {
-			enviarMensaje();
+			conectarServer();
+			//enviarMensaje();
 			recibirMensaje();
 			
 		} catch (Exception e) {
@@ -26,23 +27,22 @@ public class ServicioConex {
 	}
 	
 	public void conectarServer() {
-		conexion.setHost("2620:9b::1935:d571");
-		conexion.setUsername("Yun");
-		conexion.setPassword("Admin123");
-	
+		try {
+			conexion.setUsername("Yun");
+			conexion.setPassword("Admin123");
+			conexion.setHost("2620:9b::1935:d571");
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
 	}
 	
 	public void enviarMensaje() throws IOException, TimeoutException {
-
-		try (Connection connection = conexion.newConnection();
-				Channel channel = connection.createChannel()) {
+				Connection connection = conexion.newConnection();
+				Channel channel = connection.createChannel();
 				channel.queueDeclare("Josele", true, false, false, null);
 				channel.basicPublish("", "Josele", null, "Soy asador".getBytes(StandardCharsets.UTF_8));
-					
-				System.out.println("He llegao");
-					
-			}
-			
+		
 	}
 	
 	public void recibirMensaje() throws IOException, TimeoutException {
