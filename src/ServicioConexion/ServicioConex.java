@@ -20,14 +20,6 @@ public class ServicioConex {
 	
 	public ServicioConex() {
 		conexion = new ConnectionFactory();
-		try {
-			conectarServer();
-			//enviarMensaje();
-			//recibirMensaje();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 	}
 	
@@ -58,23 +50,25 @@ public class ServicioConex {
 		channel.queueDeclare("Josele", true, false, false, null);
 					
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-		System.out.println(new String(delivery.getBody(), "UTF-8"));
-				if(flipFlop) {
-					flipFlop=false;
-					verde.setVisible(true);
-					rojo.setVisible(false);
-
-				}else {
-					flipFlop=true;
-					verde.setVisible(false);
-					rojo.setVisible(true);				}
+							flop(verde, rojo);
 		};
 		
 		channel.basicConsume("Josele", true, deliverCallback, consumerTag -> { });
-
 		
 	}
+
+	public void flop(JLabel verde, JLabel rojo) {
+		if(flipFlop) {
+			flipFlop=false;
+			verde.setVisible(true);
+			rojo.setVisible(false);
+
+		}else {
+			flipFlop=true;
+			verde.setVisible(false);
+			rojo.setVisible(true);	
+	}
 	
-	
+	}
 
 }

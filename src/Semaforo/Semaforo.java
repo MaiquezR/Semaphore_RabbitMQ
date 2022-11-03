@@ -61,6 +61,7 @@ public class Semaforo extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					conexion.flop(lblNewLabel, lblNewLabel_1);
 					conexion.enviarMensaje();
 				} catch (IOException e1) {
 					e1.printStackTrace();
