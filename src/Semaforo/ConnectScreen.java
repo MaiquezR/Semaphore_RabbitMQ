@@ -10,6 +10,8 @@ import ServicioConexion.ServicioConex;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
