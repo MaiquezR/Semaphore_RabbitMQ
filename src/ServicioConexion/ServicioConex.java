@@ -39,7 +39,7 @@ public class ServicioConex {
 			Connection connection = conexion.newConnection();
 			Channel channel = connection.createChannel();
 			channel.queueDeclare("Josele2", true, false, false, null);
-			channel.basicPublish("", "Josele2", new AMQP.BasicProperties().builder().contentType("text/plain").deliveryMode(2).priority(1).userId("Claudio").build(), "Soy asador".getBytes(StandardCharsets.UTF_8));
+			channel.basicPublish("", "Josele2", null, "Soy asador".getBytes(StandardCharsets.UTF_8));
 		
 	}
 	
