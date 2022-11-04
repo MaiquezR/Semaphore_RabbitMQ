@@ -26,7 +26,7 @@ public class ServicioConex {
 	
 	public void conectarServer() {
 		try {
-			conexion.setUsername("Yun");
+			conexion.setUsername("Claudio");
 			conexion.setPassword("Admin123");
 			conexion.setHost("2620:9b::1935:d571");
 		} catch (Exception e) {
@@ -38,12 +38,12 @@ public class ServicioConex {
 	public void enviarMensaje() throws IOException, TimeoutException, InterruptedException {
 			Connection connection = conexion.newConnection();
 			Channel channel = connection.createChannel();
-			channel.queueDeclare("Josele", true, false, false, null);
-			channel.basicPublish("", "Josele", new AMQP.BasicProperties().builder().contentType("text/plain").deliveryMode(2).priority(1).userId("Yun").build(), "Soy asador".getBytes(StandardCharsets.UTF_8));
+			channel.queueDeclare("Josele2", true, false, false, null);
+			channel.basicPublish("", "Josele2", new AMQP.BasicProperties().builder().contentType("text/plain").deliveryMode(2).priority(1).userId("Claudio").build(), "Soy asador".getBytes(StandardCharsets.UTF_8));
 		
 	}
 	
-	public void recibirMensaje(JLabel verde, JLabel rojo) throws IOException, TimeoutException {
+	public void recibirMensaje(JLabel verde, JLabel rojo) throws IOException, TimeoutException, InterruptedException {
 		
 		Channel channel;
 		Connection connection = conexion.newConnection();
