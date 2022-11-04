@@ -39,11 +39,10 @@ public class ServicioConex {
 			Connection connection = conexion.newConnection();
 			Channel channel = connection.createChannel();
 			channel.queueDeclare("Josele", true, false, false, null);
-			channel.basicPublish("", "Josele", new AMQP.BasicProperties().builder().contentType("text/plain").deliveryMode(2).priority(1).userId("Yun").build(), "Soy asador".getBytes(StandardCharsets.UTF_8));
+			channel.basicPublish("", "Josele", null, "Soy asador".getBytes(StandardCharsets.UTF_8));
 	}
 	
 	public void recibirMensaje(JLabel verde, JLabel rojo) throws IOException, TimeoutException {
-		
 		Channel channel;
 		Connection connection = conexion.newConnection();
 		channel = connection.createChannel();
