@@ -8,6 +8,7 @@ import java.util.concurrent.TimeoutException;
 
 import javax.swing.JLabel;
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
@@ -34,11 +35,11 @@ public class ServicioConex {
 		
 	}
 	
-	public void enviarMensaje() throws IOException, TimeoutException {
+	public void enviarMensaje() throws IOException, TimeoutException, InterruptedException {
 			Connection connection = conexion.newConnection();
 			Channel channel = connection.createChannel();
 			channel.queueDeclare("Josele", true, false, false, null);
-			channel.basicPublish("", "Josele", null, "Soy asador".getBytes(StandardCharsets.UTF_8));
+			channel.basicPublish("", "Josele", new AMQP.BasicProperties().builder().contentType("text/plain").deliveryMode(2).priority(1).userId("Yun").build(), "Soy asador".getBytes(StandardCharsets.UTF_8));
 		
 	}
 	
@@ -54,7 +55,6 @@ public class ServicioConex {
 		};
 		
 		channel.basicConsume("Josele", true, deliverCallback, consumerTag -> { });
-		
 	}
 
 	public void flop(JLabel verde, JLabel rojo) {

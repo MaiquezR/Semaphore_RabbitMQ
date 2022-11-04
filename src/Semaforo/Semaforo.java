@@ -63,9 +63,13 @@ public class Semaforo extends JFrame {
 				try {
 					conexion.flop(lblNewLabel, lblNewLabel_1);
 					conexion.enviarMensaje();
+		
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} catch (TimeoutException e1) {
+					e1.printStackTrace();
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
