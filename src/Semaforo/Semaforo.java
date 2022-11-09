@@ -42,10 +42,10 @@ public class Semaforo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel(new ImageIcon("./res/rojo.png"), JLabel.CENTER);
+		JLabel lblNewLabel_1 = new JLabel(new ImageIcon(getClass().getResource("/rojo.png")), JLabel.CENTER);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel(new ImageIcon("./res/verde.png"), JLabel.CENTER);
+		JLabel lblNewLabel = new JLabel(new ImageIcon(getClass().getResource("/verde.png")), JLabel.CENTER);
 		contentPane.add(lblNewLabel);
 		
 		try {
