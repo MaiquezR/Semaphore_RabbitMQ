@@ -21,7 +21,6 @@ public class ServicioConex {
 	
 	public ServicioConex() {
 		conexion = new ConnectionFactory();
-		
 	}
 	
 	public void conectarServer() {
